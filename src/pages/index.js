@@ -240,27 +240,27 @@ export default function Home() {
             <button className='btn-secondary' onClick={clear}>Clear</button>
           </div>
         </div>
-        <div className="overflow-hidden rounded-md bg-white shadow pt-5 pb-5 px-4">
-          <div className='flex justify-between mb-1 px-1 py-2 text-gray-900 text-xs font-medium bg-gray-100'>
-            <div className='w-52'>Title</div>
-            <div className='w-14'>Amount</div>
-            <div className='w-14'>T Amount</div>
-          </div>
-          <ul role="list" className="space-y-3">
-            {localData && localData.map((item) =>
-              <li key={item.title} className="overflow-hidden bg-white px-4 py-4 shadow text-gray-500 text-md sm:rounded-md sm:px-6">
-                <motion.div className='flex justify-between' {...animations}>
-                  <div className='w-64'>{item.title && item.title}</div>
-                  <div className='w-14'>{item.amount && item.amount}</div>
-                  <div className='w-14 font-semibold'>{item.tax && item.tax}</div>
-                </motion.div>
-              </li>
-            )}
-          </ul>
-          {localData && localData.length > 0 && (
+        {localData && localData.length > 0 && (
+          <div className="overflow-hidden rounded-md bg-white shadow pt-5 pb-5 px-4">
+            <div className='flex justify-between mb-1 px-1 py-2 text-gray-900 text-xs font-medium bg-gray-100'>
+              <div className='w-52'>Title</div>
+              <div className='w-14'>Amount</div>
+              <div className='w-14'>T Amount</div>
+            </div>
+            <ul role="list" className="space-y-3">
+              {localData && localData.map((item) =>
+                <li key={item.title} className="overflow-hidden bg-white px-4 py-4 shadow text-gray-500 text-md sm:rounded-md sm:px-6">
+                  <motion.div className='flex justify-between' {...animations}>
+                    <div className='w-64'>{item.title && item.title}</div>
+                    <div className='w-14'>{item.amount && item.amount}</div>
+                    <div className='w-14 font-semibold'>{item.tax && item.tax}</div>
+                  </motion.div>
+                </li>
+              )}
+            </ul>
             <div className='flex mt-6 justify-end'>Total:&nbsp;<strong>{total}</strong></div>
-          )}
-        </div>
+          </div>
+        )}
       </main>
       <Modal title="Add Item" isOpen={isOpen} onClose={close}>
         <form onSubmit={handleSubmit(onSubmit)}>
