@@ -208,7 +208,7 @@ export default function Home() {
         <title>Bill Calculator</title>
         <meta name="description" content="Bill Calculator" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/images/icon-192x192.png" />
       </Head>
       <nav className='bg-white shadow p-4 sticky top-0'>
         <div className='container mx-auto sm:px-6 lg:px-8 flex'>
