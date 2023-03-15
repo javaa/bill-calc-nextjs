@@ -14,9 +14,9 @@ export default function Home() {
   const [isOpen, setIsOpen] = useState(false)
   const [localData, setLocalData] = useState([])
   const [total, setTotal] = useState(0)
-  const [nutsAmount, setNutsAmount] = useState(0)
-  const [nutsNoOfPeople, setNutsNoOfPeople] = useState(0)
-  const [nutsTotal, setNutsTotal] = useState(0)
+  const [nutsAmount, setNutsAmount] = useState(null)
+  const [nutsNoOfPeople, setNutsNoOfPeople] = useState(null)
+  const [nutsTotal, setNutsTotal] = useState(null)
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm({
     defaultValues: {
@@ -188,7 +188,7 @@ export default function Home() {
         const data = JSON.parse(localStorage.getItem('items'));
         if (data && data.length > 0) {
           const totalAmount = data.reduce((total, item) => {
-            return total + Number(item.amount)
+            return total + Number(item.tax)
           }, 0)
           setTotal(totalAmount)
         }
@@ -224,7 +224,7 @@ export default function Home() {
             <div className="flex space-x-4 mt-2">
               <div>
                 <label htmlFor="title" className="input-label-xs">Amount</label>
-                <input className="input-text" value={nutsAmount} onChange={handleNutsAmount} type="number" name="amount" id="amount" />
+                <input className="input-text" value={nutsAmount} step=".01" onChange={handleNutsAmount} type="number" name="amount" id="amount" />
               </div>
               <div>
               <label htmlFor="title" className="input-label-xs">No. of People</label>
@@ -287,6 +287,7 @@ export default function Home() {
                 type="number"
                 name="amount"
                 id="amount"
+                step=".01"
                 className="input-text"
                 {...register("amount", { required: true})}
                 />
