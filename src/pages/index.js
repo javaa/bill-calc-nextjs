@@ -210,7 +210,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <nav className='bg-white shadow p-4'>
+      <nav className='bg-white shadow p-4 sticky top-0'>
         <div className='container mx-auto sm:px-6 lg:px-8 flex'>
           <div className='flex-1'><Logo /></div>
           <div></div>
@@ -231,7 +231,7 @@ export default function Home() {
               <input className='input-text' value={nutsNoOfPeople} onChange={handleNutsNoOfPeople} type="number" name="no_of_people" id="no_of_people" />
               </div>
               <div>
-              <label htmlFor="title" className="input-label-xs">Total</label>
+              <label htmlFor="title" className="input-label-xs">Value</label>
               <input className='input-text' value={nutsTotal} onChange={(e) => console(e.target.value)} type="number" name="total" id="total" disabled="disabled" />
               </div>
             </div>
@@ -241,6 +241,11 @@ export default function Home() {
           </div>
         </div>
         <div className="overflow-hidden rounded-md bg-white shadow pt-5 pb-5 px-4">
+          <div className='flex justify-between mb-1 px-1 py-2 text-gray-900 text-xs font-medium bg-gray-100'>
+            <div className='w-52'>Title</div>
+            <div className='w-14'>Amount</div>
+            <div className='w-14'>T Amount</div>
+          </div>
           <ul role="list" className="space-y-3">
             {localData && localData.map((item) =>
               <li key={item.title} className="overflow-hidden bg-white px-4 py-4 shadow text-gray-500 text-md sm:rounded-md sm:px-6">
