@@ -190,7 +190,7 @@ export default function Home() {
           const totalAmount = data.reduce((total, item) => {
             return total + Number(item.tax)
           }, 0)
-          setTotal(totalAmount)
+          setTotal(totalAmount.toFixed(2))
         }
       }
     }
@@ -224,15 +224,15 @@ export default function Home() {
             <div className="flex space-x-4 mt-2">
               <div>
                 <label htmlFor="title" className="input-label-xs">Amount</label>
-                <input className="input-text" value={nutsAmount} step=".01" onChange={handleNutsAmount} type="number" name="amount" id="amount" />
+                <input className="input-text" value={nutsAmount == null ? '' : nutsAmount} step=".01" onChange={handleNutsAmount} type="number" name="amount" id="amount" />
               </div>
               <div>
               <label htmlFor="title" className="input-label-xs">No. of People</label>
-              <input className='input-text' value={nutsNoOfPeople} onChange={handleNutsNoOfPeople} type="number" name="no_of_people" id="no_of_people" />
+              <input className='input-text' value={nutsNoOfPeople == null ? '' : nutsNoOfPeople} onChange={handleNutsNoOfPeople} type="number" name="no_of_people" id="no_of_people" />
               </div>
               <div>
               <label htmlFor="title" className="input-label-xs">Value</label>
-              <input className='input-text' value={nutsTotal} onChange={(e) => console(e.target.value)} type="number" name="total" id="total" disabled="disabled" />
+              <input className='input-text' value={nutsTotal == null ? '' : nutsTotal} onChange={(e) => console(e.target.value)} type="number" name="total" id="total" disabled="disabled" />
               </div>
             </div>
           </div>
@@ -253,7 +253,7 @@ export default function Home() {
                   <motion.div className='flex justify-between' {...animations}>
                     <div className='w-64'>{item.title && item.title}</div>
                     <div className='w-14'>{item.amount && item.amount}</div>
-                    <div className='w-14 font-semibold'>{item.tax && item.tax}</div>
+                    <div className='w-14 font-semibold text-right'>{item.tax && item.tax}</div>
                   </motion.div>
                 </li>
               )}
