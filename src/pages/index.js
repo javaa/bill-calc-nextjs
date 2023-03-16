@@ -210,7 +210,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/images/icon-192x192.png" />
       </Head>
-      <nav className='bg-white shadow p-4 sticky top-0'>
+      <nav className='bg-white shadow p-4 sticky top-0 z-10'>
         <div className='container mx-auto sm:px-6 lg:px-8 flex'>
           <div className='flex-1'><Logo /></div>
           <div></div>
@@ -243,22 +243,22 @@ export default function Home() {
         {localData && localData.length > 0 && (
           <div className="overflow-hidden rounded-md bg-white shadow pt-5 pb-5 px-4">
             <div className='flex justify-between mb-1 px-1 py-2 text-gray-900 text-xs font-medium bg-gray-100'>
-              <div className='w-52'>Title</div>
-              <div className='w-14'>Amount</div>
-              <div className='w-14'>T Amount</div>
+              <div className='w-48'>Title</div>
+              <div className='w-16 text-right'>Amount</div>
+              <div className='w-16 text-right'>T Amount</div>
             </div>
             <ul role="list" className="space-y-3">
-              {localData && localData.map((item) =>
-                <li key={item.title} className="overflow-hidden bg-white px-4 py-4 shadow text-gray-500 text-md sm:rounded-md sm:px-6">
+              {localData && localData.map((item, index) =>
+                <li key={index} className="overflow-hidden bg-white px-4 py-4 shadow text-gray-500 text-md sm:rounded-md sm:px-6">
                   <motion.div className='flex justify-between' {...animations}>
-                    <div className='w-64'>{item.title && item.title}</div>
-                    <div className='w-14'>{item.amount && item.amount}</div>
-                    <div className='w-14 font-semibold text-right'>{item.tax && item.tax}</div>
+                    <div className='w-48'>{item.title && item.title}</div>
+                    <div className='w-16 text-right'>{item.amount && item.amount}</div>
+                    <div className='w-16 font-semibold text-right'>{item.tax && item.tax}</div>
                   </motion.div>
                 </li>
               )}
             </ul>
-            <div className='flex mt-6 justify-end'>Total:&nbsp;<strong>{total}</strong></div>
+            <div className='flex mt-6 justify-end mr-4'><strong>{total}</strong></div>
           </div>
         )}
       </main>
